@@ -1,3 +1,5 @@
+if( not ace:LoadTranslation("cgCrafty") ) then
+--DEFAULT_CHAT_FRAME:AddMessage("craft_nothing")
 -- Version
 cgc.Version = "2.0.14"
 
@@ -30,4 +32,4 @@ cgc.LOCALS.FRAME_SEARCH_TYPES_DESC = {
 	[3] = "Requires", "Search by the type of tools/items required to create the item.",
 }
 
-
+end

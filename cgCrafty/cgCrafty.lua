@@ -116,15 +116,15 @@ function cgc:OnEnable()
 		self.frame.SubmitButton = CreateFrame("Button", nil, self.frame, "GameMenuButtonTemplate")
 		self.frame.SubmitButton:SetWidth(20)
 		self.frame.SubmitButton:SetHeight(25)
-		self.frame.SubmitButton:SetPoint("RIGHT", self.frame.ResetButton, "LEFT", -10, 0)
+		self.frame.SubmitButton:SetPoint("RIGHT", self.frame.ResetButton, "LEFT", -7, 0)
 		self.frame.SubmitButton:SetText(self.LOCALS.FRAME_SUBMIT_TEXT)
 		self.frame.SubmitButton:SetScript("OnClick", function() self:Search(self.frame.SearchBox:GetText()) end)
 	
 		-- SearchType dropdown button to show the menu when clicked.
 		self.frame.SearchTypeButton = CreateFrame("Button", nil, self.frame, "GameMenuButtonTemplate")
-		self.frame.SearchTypeButton:SetWidth(70)
+		self.frame.SearchTypeButton:SetWidth(90)
 		self.frame.SearchTypeButton:SetHeight(25)
-		self.frame.SearchTypeButton:SetPoint("LEFT", self.frame.SearchBox, "RIGHT", 8, 0)
+		self.frame.SearchTypeButton:SetPoint("LEFT", self.frame.SearchBox, "RIGHT", 2, 0)
 		self.frame.SearchTypeButton:SetText("Type")
 		self.frame.SearchTypeButton:SetScript("OnClick", function() 
 				if ( dewdrop:IsOpen(self.frame.SearchTypeButton) ) then 
@@ -166,7 +166,7 @@ function cgc:OnEnable()
 		self.frame.LinkReagentButton = CreateFrame("Button", nil, self.frame, "GameMenuButtonTemplate")
 		self.frame.LinkReagentButton:SetWidth(50)
 		self.frame.LinkReagentButton:SetHeight(25)
-		self.frame.LinkReagentButton:SetPoint("LEFT", self.frame.SearchTypeButton, "RIGHT", 8, 0)
+		self.frame.LinkReagentButton:SetPoint("LEFT", self.frame.SearchTypeButton, "RIGHT", 2, 0)
 		self.frame.LinkReagentButton:SetText(self.LOCALS.FRAME_LINK_REAGENTS)
 		self.frame.LinkReagentButton:SetScript("OnClick", function() 
 				if ( dewdrop:IsOpen(self.frame.LinkReagentButton) ) then 
@@ -369,10 +369,10 @@ function cgc:Update(craft)
 		
 		-- Keeps the list from being rebuilt unncessarily when the user is scrolling through search results.
 		if ( self.found and getn(self.found) == 0 ) then
-			if ( searchType == "Reagent" ) then
+			if ( searchType == cgc.LOCALS.FRAME_SEARCH_TYPES[2] ) then
 				-- search by reagent results
 				self:BuildListByReagent(self:GetSearchText(), craft)
-			elseif ( searchType == "Requires" ) then
+			elseif ( searchType == cgc.LOCALS.FRAME_SEARCH_TYPES[3] ) then
 				-- search by requires results
 				self:BuildListByRequire(self:GetSearchText(), craft)
 			else
